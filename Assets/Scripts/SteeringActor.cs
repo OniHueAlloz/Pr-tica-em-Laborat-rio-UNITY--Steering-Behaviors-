@@ -18,6 +18,7 @@ public class SteeringActor : MonoBehaviour
     [SerializeField] float evadeRadius = 5f;
     [SerializeField] float fleeRadius = 1f;
     [SerializeField] float stalkRadius = 2.5f;
+    [SerializeField] float avoidRadius = 3.5f;
 
     Text behaviorDisplay = null;
     Rigidbody2D physics;
@@ -221,27 +222,19 @@ public class SteeringActor : MonoBehaviour
 
     void WallAvoidBehavior()
     {
-        Vector2 delta = target.position - transform.position;
+        Collider2D wallCollider = wall.GetComponent<Collider2D>();
+        Vector2 closestPoint = wallCollider.ClosestPoint(transform.position);
+        Vector2 delta = closestPoint - (Vector2)transform.position;
         Vector2 steering = delta.normalized * maxSpeed - physics.velocity;
         float distance = delta.magnitude;
 
-        Vector2 alpha = wall.position - transform.position;
-        Vector2 alphasteering = alpha.normalized * maxSpeed - physics.velocity;
-        float walldistance = alpha.magnitude;
-
-        //wallavoid, evade, idle
-
-        if (walldistance > evadeRadius && distance > evadeRadius)
+        if(distance > avoidRadius)
         {
             state = State.Idle;
         }
-        else if(distance > evadeRadius)
-        {
-            state = State.WallAvoid;
-        }
         else
         {
-            state = State.Evade;
+            state = State.WallAvoid;
         }
 
         switch(state)
@@ -249,21 +242,24 @@ public class SteeringActor : MonoBehaviour
             case State.Idle:
                 IdleBehavior();
                 break;
-            case State.Evade:
-                physics.velocity -= steering * Time.fixedDeltaTime;
-                break;
             case State.WallAvoid:
-                physics.velocity -= alphasteering * Time.fixedDeltaTime;
+                physics.velocity -= steering * Time.fixedDeltaTime;
                 break;
         }
     }
 
     void OnDrawGizmos()
     {
-        if (target == null)
+        if (target == null && wall == null)
         {
             return;
         }
+
+        Collider2D wallCollider = wall.GetComponent<Collider2D>();
+        Vector2 closestPoint = wallCollider.ClosestPoint(transform.position);
+
+        Gizmos.color = Color.Lerp(Color.red, Color.yellow, 0.35f);
+        Gizmos.DrawSphere(closestPoint, 0.1f);
 
         switch (behavior)
         {
@@ -296,8 +292,8 @@ public class SteeringActor : MonoBehaviour
                 Gizmos.DrawWireSphere(transform.position, (stalkRadius + arriveRadius));
                 break;
             case Behavior.WallAvoid:
-                Gizmos.color = Color.Lerp(Color.red, Color.yellow, 0.5f);
-                Gizmos.DrawWireSphere(transform.position, evadeRadius);
+                Gizmos.color = Color.black;
+                Gizmos.DrawWireSphere(transform.position, avoidRadius);
                 break;
         }
 
@@ -309,7 +305,22 @@ public class SteeringActor : MonoBehaviour
     {
         if (other.CompareTag("Wall"))
         {
-            wall = other.transform;
+            if (wall == null)
+            {
+                wall = other.transform;
+            }
+            
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag("Wall"))
+        {
+            if (wall == other.transform)
+            {
+                wall = null;
+            }
         }
     }
 }

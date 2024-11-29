@@ -249,7 +249,7 @@ BoxCollider2D:
     border: {x: 0.049999997, y: 0.049999997, z: 0.049999997, w: 0.049999997}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 0.16, y: 0.16}
-    newSize: {x: 0.32, y: 0.32}
+    newSize: {x: 0.16, y: 0.16}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -264,7 +264,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 173966603}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -296,15 +296,15 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.32, y: 0.32}
+  m_Size: {x: 0.16, y: 0.16}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &205559169
@@ -380,7 +380,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 205559169}
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -0.15, y: 0, z: 100}
+  m_LocalPosition: {x: -0.29, y: 0, z: 100}
   m_LocalScale: {x: 10000, y: 10000, z: 10000}
   m_Children: []
   m_Father: {fileID: 0}
@@ -398,6 +398,7 @@ GameObject:
   - component: {fileID: 209926369}
   - component: {fileID: 209926368}
   - component: {fileID: 209926371}
+  - component: {fileID: 209926372}
   m_Layer: 0
   m_Name: NPC Flee
   m_TagString: Untagged
@@ -484,7 +485,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 209926367}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.83, y: 0.32, z: 0}
+  m_LocalPosition: {x: 6.84, y: 0.73, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 859598301}
@@ -505,7 +506,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   behavior: 3
   target: {fileID: 739625048}
-  wall: {fileID: 1731373367}
+  wall: {fileID: 603779973}
   maxSpeed: 4
   decelerationFactor: 0.75
   arriveRadius: 1.2
@@ -513,6 +514,23 @@ MonoBehaviour:
   evadeRadius: 5
   fleeRadius: 1
   stalkRadius: 2.5
+  avoidRadius: 3.5
+--- !u!58 &209926372
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 209926367}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.063999996, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.16
 --- !u!1 &313736851
 GameObject:
   m_ObjectHideFlags: 0
@@ -684,6 +702,7 @@ GameObject:
   - component: {fileID: 363676204}
   - component: {fileID: 363676203}
   - component: {fileID: 363676205}
+  - component: {fileID: 363676206}
   m_Layer: 0
   m_Name: NPC Seek
   m_TagString: Untagged
@@ -776,7 +795,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   behavior: 1
   target: {fileID: 739625048}
-  wall: {fileID: 1731373367}
+  wall: {fileID: 603779973}
   maxSpeed: 4
   decelerationFactor: 0.75
   arriveRadius: 1.2
@@ -784,6 +803,23 @@ MonoBehaviour:
   evadeRadius: 5
   fleeRadius: 1
   stalkRadius: 2.5
+  avoidRadius: 3.5
+--- !u!58 &363676206
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 363676202}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.063999996, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.16
 --- !u!1 &379763746
 GameObject:
   m_ObjectHideFlags: 0
@@ -796,6 +832,7 @@ GameObject:
   - component: {fileID: 379763749}
   - component: {fileID: 379763748}
   - component: {fileID: 379763747}
+  - component: {fileID: 379763751}
   m_Layer: 0
   m_Name: NPC Cohesion
   m_TagString: Untagged
@@ -817,7 +854,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   behavior: 5
   target: {fileID: 739625048}
-  wall: {fileID: 1731373367}
+  wall: {fileID: 603779973}
   maxSpeed: 4
   decelerationFactor: 0.75
   arriveRadius: 1.2
@@ -825,6 +862,7 @@ MonoBehaviour:
   evadeRadius: 5
   fleeRadius: 1
   stalkRadius: 2.5
+  avoidRadius: 3.5
 --- !u!50 &379763748
 Rigidbody2D:
   serializedVersion: 4
@@ -904,13 +942,29 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 379763746}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.35, y: -2.87, z: 0}
+  m_LocalPosition: {x: 4.36, y: -2.4599998, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1352389171}
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &379763751
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 379763746}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.063999996, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.16
 --- !u!1 &436374065
 GameObject:
   m_ObjectHideFlags: 0
@@ -1004,6 +1058,7 @@ GameObject:
   - component: {fileID: 453734985}
   - component: {fileID: 453734984}
   - component: {fileID: 453734983}
+  - component: {fileID: 453734987}
   m_Layer: 0
   m_Name: NPC Pursuit
   m_TagString: Untagged
@@ -1025,7 +1080,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   behavior: 4
   target: {fileID: 739625048}
-  wall: {fileID: 1731373367}
+  wall: {fileID: 603779973}
   maxSpeed: 4
   decelerationFactor: 0.75
   arriveRadius: 1.2
@@ -1033,6 +1088,7 @@ MonoBehaviour:
   evadeRadius: 5
   fleeRadius: 1
   stalkRadius: 2.5
+  avoidRadius: 3.5
 --- !u!50 &453734984
 Rigidbody2D:
   serializedVersion: 4
@@ -1112,13 +1168,29 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 453734982}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.8, y: 3.05, z: 0}
+  m_LocalPosition: {x: 2.8100002, y: 3.46, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1486163209}
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &453734987
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 453734982}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.063999996, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.16
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -1311,8 +1383,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 603779972}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.01999998, y: -4.87, z: -0.6720567}
-  m_LocalScale: {x: 183.06622, y: 8.637673, z: 1}
+  m_LocalPosition: {x: -0.421, y: -4.87, z: -0.6720567}
+  m_LocalScale: {x: 177.55573, y: 8.637673, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 12
@@ -1335,7 +1407,7 @@ BoxCollider2D:
     border: {x: 0.049999997, y: 0.049999997, z: 0.049999997, w: 0.049999997}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 0.16, y: 0.16}
-    newSize: {x: 0.32, y: 0.32}
+    newSize: {x: 0.16, y: 0.16}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -1350,7 +1422,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 603779972}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -1382,15 +1454,15 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.32, y: 0.32}
+  m_Size: {x: 0.16, y: 0.16}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &614831209
@@ -1401,7 +1473,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 363676202}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.747, y: -1.757, z: 0}
+  m_LocalPosition: {x: -2.7369998, y: -1.347, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1750464126}
@@ -1538,6 +1610,7 @@ GameObject:
   - component: {fileID: 775941469}
   - component: {fileID: 775941468}
   - component: {fileID: 775941471}
+  - component: {fileID: 775941472}
   m_Layer: 0
   m_Name: NPC Evade
   m_TagString: Untagged
@@ -1624,7 +1697,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 775941467}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.38, y: -0.74, z: 0}
+  m_LocalPosition: {x: -5.37, y: -0.33, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 436374066}
@@ -1645,7 +1718,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   behavior: 2
   target: {fileID: 739625048}
-  wall: {fileID: 1731373367}
+  wall: {fileID: 603779973}
   maxSpeed: 4
   decelerationFactor: 0.75
   arriveRadius: 1.2
@@ -1653,6 +1726,23 @@ MonoBehaviour:
   evadeRadius: 5
   fleeRadius: 1
   stalkRadius: 2.5
+  avoidRadius: 3.5
+--- !u!58 &775941472
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 775941467}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.063999996, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.16
 --- !u!1 &801639439
 GameObject:
   m_ObjectHideFlags: 0
@@ -2130,6 +2220,7 @@ GameObject:
   - component: {fileID: 1447720469}
   - component: {fileID: 1447720468}
   - component: {fileID: 1447720467}
+  - component: {fileID: 1447720471}
   m_Layer: 0
   m_Name: NPC WallAvoid
   m_TagString: Untagged
@@ -2151,7 +2242,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   behavior: 6
   target: {fileID: 739625048}
-  wall: {fileID: 1731373367}
+  wall: {fileID: 603779973}
   maxSpeed: 4
   decelerationFactor: 0.75
   arriveRadius: 1.2
@@ -2159,6 +2250,7 @@ MonoBehaviour:
   evadeRadius: 5
   fleeRadius: 1
   stalkRadius: 2.5
+  avoidRadius: 3.5
 --- !u!50 &1447720468
 Rigidbody2D:
   serializedVersion: 4
@@ -2238,13 +2330,29 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1447720466}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 11.69, y: -3.33, z: 0}
+  m_LocalPosition: {x: 10.09, y: -2.62, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 346006604}
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &1447720471
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1447720466}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.063999996, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.16
 --- !u!1 &1486163208
 GameObject:
   m_ObjectHideFlags: 0
@@ -2454,7 +2562,7 @@ BoxCollider2D:
     border: {x: 0.049999997, y: 0.049999997, z: 0.049999997, w: 0.049999997}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 0.16, y: 0.16}
-    newSize: {x: 0.32, y: 0.32}
+    newSize: {x: 0.16, y: 0.16}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -2469,7 +2577,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1731373366}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -2501,15 +2609,15 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.32, y: 0.32}
+  m_Size: {x: 0.16, y: 0.16}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &1750464125
@@ -2721,7 +2829,7 @@ BoxCollider2D:
     border: {x: 0.049999997, y: 0.049999997, z: 0.049999997, w: 0.049999997}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 0.16, y: 0.16}
-    newSize: {x: 0.32, y: 0.32}
+    newSize: {x: 0.16, y: 0.16}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -2736,7 +2844,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1851817083}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -2768,14 +2876,14 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.32, y: 0.32}
+  m_Size: {x: 0.16, y: 0.16}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
